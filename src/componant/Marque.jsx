@@ -13,7 +13,7 @@ const Marque = () => {
     // console.log(tradingPost)
 
   return (
-    <div className="flex mx-[120px] justify-center align-middle bg-slate-100 p-3 rounded gap-3">
+    <div className="flex mx-[120px] justify-center align-middle bg-slate-100 p-3 rounded gap-3 max-xl:mx-[20px]">
       <button className="px-6 py-3 bg-red-500 rounded text-white">
         latest
       </button>

@@ -26,56 +26,51 @@ const Register = () => {
     console.log(img);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-      const username = form.username.value;
-      console.log(username)
-    const email = form.email.value;
-    const password = form.password.value;
-    const reTypePass = form.confirmPassword.value;
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const username = form.username.value;
+  const email = form.email.value;
+  const password = form.password.value;
+  const reTypePass = form.confirmPassword.value;
 
-    console.log(password);
-    console.log(reTypePass);
+  if (!accept) {
+    alert("Please accept the terms and conditions.");
+    return;
+  }
 
-    if (!accept) {
-      alert("hell0");
-      return;
-    }
+  if (!/^(?=.*\d).{8,}$/.test(password)) {
+    alert("Your password must contain at least one number and be 8 characters long.");
+    return;
+  }
 
-    if (!/^(?=.*\d).{8,}$/.test(password)) {
-      alert(
-        "Your password must contain at least one number and be 8 characters long."
-      );
-      return;
-    }
+  if (reTypePass !== password) {
+    alert("Your passwords do not match.");
+    return;
+  }
 
-    if (reTypePass !== password) {
-      alert("Your passwords do not match.");
-      return;
-    }
+  try {
+    // Create user with email and password
+    const userData = await createUser(email, password);
+      const user = userData.user;
+      console.log(user)
 
-    createUser(email, password)
-    .then((userData) => {
-        const user = userData.user;
-        
-        // Assuming img is a URL string, if not, modify accordingly
-        const photoURL = img; 
-    
-        // Update the user's profile
-        return updateProfile(auth.currentUser, {
-          displayName: username,
-          photoURL: photoURL
-        });
-    })
-        .then(() => {
-            console.log('hello')
-        })
-      .catch((error) => {
-        const errorMsg = error.message;
-        alert(`Error: ${errorMsg}`);
-      });
+    // Assuming img is a URL string, if not, modify accordingly
+    const photoURL = img;
+
+    // Update the user's profile
+    await updateProfile(auth.currentUser, {
+      displayName: username,
+      photoURL: photoURL,
+    });
+
+    console.log('User registered successfully with profile photo and username.');
+  } catch (error) {
+    const errorMsg = error.message;
+    alert(`Error: ${errorMsg}`);
   };
+};
+
 
   return (
     <section className="mx-[120px] flex flex-col items-center">

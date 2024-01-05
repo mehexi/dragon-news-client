@@ -17,7 +17,7 @@ const Social = () => {
 
   return (
     <>
-      <div className={`flex flex-col gap-3 mb-6 ${user?'hidden':''}`}>
+      <div className={`flex flex-col gap-3 mb-6 transform overflow-hidden origin-top duration-100 ease-linear ${user?'scale-y-0 h-0':'scale-y-100 h-100'}`}>
         <h1 className="font-semibold text-xl">login with</h1>
         <div className="flex flex-col gap-3">
           <button onClick={handleGoogleLogin} className="w-full border-2 text-blue-300 font-semibold border-blue-300 rounded  py-3 flex items-center gap-3 justify-center hover:bg-blue-300 hover:text-white">

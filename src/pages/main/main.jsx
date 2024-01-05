@@ -12,14 +12,14 @@ const MainPost = () => {
     console.log(selectedCatagory)
     
     return (
-        <section className='grid grid-cols-5 mx-[120px] mt-[50px] gap-12'>
+        <section className='grid max-sm:grid-cols-1 lg:grid-cols-5 mx-[120px] mt-[50px] gap-12 max-xl:mx-[20px]'>
             <div className='col-span-1'>
                 <Catagory handleSelected={handleSelected}></Catagory>
             </div>
             <div className='col-span-3'>
                 <PostContainer selectedCatagory={selectedCatagory}></PostContainer>
             </div>
-            <div className='col-span-1'>
+            <div className='col-span-1 max-lg:hidden'>
                 <Social></Social>
             </div>
         </section>

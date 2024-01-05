@@ -16,7 +16,7 @@ const Catagory = ({handleSelected}) => {
   return (
     <div className="flex flex-col gap-3">
       <h1 className="text-xl font-semibold">All Catagory</h1>
-      <div>
+      <div className="max-lg:hidden"> 
         {catagories.map((catagory) => (
           <button
             key={catagory.id}
@@ -24,7 +24,7 @@ const Catagory = ({handleSelected}) => {
               handleSelected(catagory.id)
               setActive(catagory.id)
             }}
-            className={`w-full py-3  text-start rounded px-6 border-b ${active===catagory.id?'bg-red-500 text-white duration-200':'hover:bg-gray-200'}`}
+            className={`w-full py-3  text-start rounded  px-6 border-b ${active===catagory.id?'bg-red-500 text-white duration-200':'hover:bg-gray-100'}`}
           >
             <h1>{catagory.name}</h1>
           </button>

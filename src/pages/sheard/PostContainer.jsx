@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Post from "../../componant/Post";
+import NavSm from "./NavSm";
+
+
 
 const PostContainer = ({selectedCatagory}) => { 
   const [posts, setPosts] = useState([]);
@@ -32,6 +35,7 @@ const PostContainer = ({selectedCatagory}) => {
 
   return (
     <>
+      
       <h1 className="text-xl font-semibold mb-3"> {categoryName}: {filteredPosts.length}</h1>
       <div className="flex flex-col gap-3">
         {
