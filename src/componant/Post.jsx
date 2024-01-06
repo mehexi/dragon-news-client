@@ -1,8 +1,9 @@
 import React from "react";
 import { FaBookmark, FaShare, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Post = (props) => {
-  const { author, title, image_url, details, rating } = props.post;
+  const { author, title, image_url, details, rating,_id } = props.post;
 
   const postDetails = details.slice(0, 350);
 
@@ -37,7 +38,9 @@ const Post = (props) => {
             <img className="w-full" src={image_url} alt="" />
             <p>
               {postDetails}...{" "}
-              <span className="underline text-blue-400">read more</span>
+              <Link to={_id}>
+                <span className="underline text-blue-400">read more</span>
+                </Link>
             </p>
           </div>
         </div>

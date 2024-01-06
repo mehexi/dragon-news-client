@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../auth/Auth";
 import { FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavChildren = () => {
   const { user, loading, logOutUser } = useContext(AuthContext);
@@ -10,9 +10,27 @@ const NavChildren = () => {
   return (
     <div className="mx-[120px] max-sm:hidden flex justify-center list-none gap-6 relative">
       <div className="flex gap-3">
-        <li>home</li>
-        <li>home</li>
-        <li>home</li>
+        <NavLink to={'/'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "bg-red-500 rounded px-3 text-white"
+                        : isPending
+                        ? "pending"
+                        : "hover:bg-gray-200 px-3 rounded"
+                    }><li>home</li></NavLink>
+        <NavLink to={'login'}  className={({ isActive, isPending }) =>
+                      isActive
+                        ? "bg-red-500 rounded px-3 text-white"
+                        : isPending
+                        ? "pending"
+                        : "hover:bg-gray-200 px-3 rounded"
+                    }><li>Login</li></NavLink>
+        <NavLink to={'/register'} className={({ isActive, isPending }) =>
+                      isActive
+                        ? "bg-red-500 rounded px-3 text-white"
+                        : isPending
+                        ? "pending"
+                        : "hover:bg-gray-200 px-3 rounded"
+                    }><li>Registration</li></NavLink>
       </div>
       <div className="absolute right-0">
         {loading ? (

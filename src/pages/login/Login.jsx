@@ -1,9 +1,16 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link,  Navigate,  useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../auth/Auth";
 
 const Login = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const from = location.state?.from?.pathname || '/'
+  console.log(from)
+
+  console.log(location)
   const [showPass, setShowPass] = useState(false);
     const [error, setError] = useState(null);
     const{LoginWithEmail} = useContext(AuthContext)
@@ -22,7 +29,8 @@ const Login = () => {
       
     LoginWithEmail(email, pass)
           .then(userData => {
-          console.log(userData.user)
+            console.log(userData.user)
+            navigate(from,{replace:true})
           })
           .catch(error => {
           setError(error.message)
