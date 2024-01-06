@@ -30,8 +30,7 @@ const PostContainer = ({selectedCatagory}) => {
     : 'All News';
   
 
-  console.log(filteredPosts);
-  console.log(categoryName)
+  
 
   return (
     <>
